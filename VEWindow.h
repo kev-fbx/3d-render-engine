@@ -13,8 +13,13 @@ namespace VE {
 		~VEWindow();
 
 		bool shouldClose() { return glfwWindowShouldClose(window); }
+
+		VEWindow(const VEWindow&) = delete;
+		VEWindow& operator = (const VEWindow&) = delete;
+
 	private:
 		void initWindow();
+
 		const int width;
 		const int height;
 		std::string windowName;
