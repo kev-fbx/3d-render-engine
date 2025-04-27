@@ -1,4 +1,6 @@
-#include "VEWindow.h"
+#include "ve_window.h"
+
+#include <stdexcept>
 
 namespace VE {
 
@@ -17,5 +19,11 @@ namespace VE {
 		glfwWindowHint(GLFW_RESIZABLE, GLFW_FALSE);
 
 		window = glfwCreateWindow(width, height, windowName.c_str(), nullptr, nullptr);
+	}
+
+	void VEWindow::createWindowSurface(VkInstance instance, VkSurfaceKHR* surface) {
+		if (glfwCreateWindowSurface(instance, window, nullptr, surface) != VK_SUCCESS) {
+			throw std::runtime_error("failed to create window surface!");
+		}
 	}
 } // namespace VE

@@ -1,7 +1,8 @@
 #pragma once
 
-#include "VEWindow.h"
-#include "VE_Pipeline.h"
+#include "ve_window.h"
+#include "ve_pipeline.h"
+#include "ve_device.h"
 
 namespace VE {
 	class App {
@@ -11,7 +12,12 @@ namespace VE {
 
 		void run();
 	private:
-		VEWindow veWindow{WIDTH, HEIGHT, "My First App"};
-		VEPipeline vePipeline{ "shaders/simple_shader.vert.spv", "shaders/simple_shader.frag.spv" };
+		VEWindow veWindow{ WIDTH, HEIGHT, "First App" };
+		VEDevice veDevice{ veWindow };
+		VEPipeline vePipeline{
+			veDevice,
+			"shaders/simple_shader.vert.spv",
+			"shaders/simple_shader.frag.spv",
+			VEPipeline::defaultPipelineConfigInfo(WIDTH, HEIGHT)};
 	};
 }

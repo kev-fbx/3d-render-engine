@@ -13,6 +13,7 @@ namespace VE {
 		~VEWindow();
 
 		bool shouldClose() { return glfwWindowShouldClose(window); }
+		void createWindowSurface(VkInstance instance, VkSurfaceKHR* surface);
 
 		VEWindow(const VEWindow&) = delete;
 		VEWindow& operator = (const VEWindow&) = delete;
